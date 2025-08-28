@@ -17,6 +17,21 @@ function Footer() {
             Your one-stop destination for quality products at unbeatable prices.
             Shop with confidence and enjoy fast, reliable delivery.
           </p>
+          {/* socials */}
+          <div className="flex flex-row gap-2.5">
+            <svg className="size-8 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+              <use href="../sprite.svg#facebook_icon"></use>
+            </svg>
+            <svg className="size-8 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+              <use href="../sprite.svg#twitter_icon"></use>
+            </svg>
+            <svg className="size-8 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+              <use href="../sprite.svg#insta_icon"></use>
+            </svg>
+            <svg className="size-8 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+              <use href="../sprite.svg#youtube_icon"></use>
+            </svg>
+          </div>
         </div>
         {/* Quick Links */}
         <div className="flex flex-col flex-1">
