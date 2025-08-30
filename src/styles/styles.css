@@ -1,4 +1,91 @@
 @import "tailwindcss";
 @theme {
   --breakpoint-xs: 33rem;
+  --breakpoint-bxs: 26rem;
 }
+/* Hide the default checkbox */
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* Style the custom checkmark */
+.custom-checkbox .checkmark {
+  display: inline-block;
+  width: 14px;
+  height: 13px;
+  background-color: rgb(229, 231, 233);
+  border-radius: 3px;
+  border: 0.5px solid rgb(178, 186, 187);
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Add a checkmark when checked */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  color: white;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+/* Change background color  when checked */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: black;
+  border: 0.5px solid black;
+}
+/* ////////////////////////////////////////// */
+/* Hide the native radio */
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+/* Style the custom radio circle */
+.radio-mark {
+  display: inline-block;
+  width: 14px;
+  height: 13px;
+  background-color: rgb(229, 231, 233);
+  border-radius: 3px;
+  border: 0.5px solid rgb(178, 186, 187);
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Inner dot when selected */
+.custom-radio input[type="radio"]:checked + .radio-mark::after {
+  content: "";
+  position: absolute;
+  color: white;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+/* Change background color  when checked */
+.custom-radio input[type="radio"]:checked + .radio-mark {
+  background-color: black;
+  border: 0.5px solid black;
+}
+/* /////////////////////////////////////// */
+.range-slider {
+  height: 13px !important;
+}
+.range-slider .range-slider__thumb {
+  background-color: white !important;
+  width: 13px !important;
+  height: 13px !important;
+}
+
+.range-slider__range {
+  background-color: black !important;
+  border-radius: 9px;
+}
+/* /////////////////////////////////////// */
