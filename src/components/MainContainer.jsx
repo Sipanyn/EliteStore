@@ -8,7 +8,7 @@ function MainContainer() {
     <div className="flex flex-row justify-between gap-2.5 bxs:gap-1 pl-2 pr-2 sm:pl-20  sm:pr-20  md:pl-40 md:pr-40 pt-1.5 sm:pt-5">
       <div
         className={`
-         z-10 fixed left-0 h-full
+         z-10 fixed left-0 h-dvh
          lg:z-0  lg:translate-x-0  lg:block lg:relative lg:h-fit
           ${!filterMenuOpen && "-translate-x-[200%] hidden"}`}
       >
