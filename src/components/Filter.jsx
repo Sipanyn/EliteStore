@@ -7,15 +7,19 @@ function Filter({ setFilterMenuOpen }) {
   const [CatmenuOpen, setCatMenuOpen] = useState(true);
   const [RatingMenuOpen, setRatingMenuOpen] = useState(true);
   const [priceMenuOpen, setPriceMenuOpen] = useState(true);
+  const [value, setValue] = useState([0, 1000]);
+  function onThumbDragEnd() {
+    console.log("sipan");
+  }
   return (
-    <div className="flex flex-col p-3 rounded-md border-1 border-black h-full w-[280px] mb-14 bg-white ">
+    <div className="flex flex-col p-3 rounded-md border-1 border-black h-full w-full lg:w-[280px] mb-14 bg-white overflow-auto ">
       {/* header */}
-      <div className="flex flex-col gap-4  items-center mb-8">
+      <div className="flex flex-col gap-1.5  items-center mb-1 lg:mb-8">
         {/* close */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex justify-end w-full">
           <svg
             onClick={() => setFilterMenuOpen()}
-            className={`size-6 text-gray-400  rounded-tr-md border-1 border-slate-600 rounded-md absolute top-1 right-1 cursor-pointer`}
+            className={`size-6 text-gray-400  border-1 border-slate-600 rounded-md   cursor-pointer`}
           >
             <use href="../sprite.svg#close_icon"></use>
           </svg>
@@ -120,11 +124,17 @@ function Filter({ setFilterMenuOpen }) {
       {/* ranger */}
       {priceMenuOpen && (
         <div className="flex flex-col gap-2.5">
-          <RangeSlider />
+          <RangeSlider
+            min={0}
+            max={1000}
+            value={value}
+            step={1}
+            onInput={setValue}
+          />
 
           <div className="flex flex-row justify-between">
-            <p>$0</p>
-            <p>$1000</p>
+            <p>${value[0]}</p>
+            <p>${value[1]}</p>
           </div>
         </div>
       )}

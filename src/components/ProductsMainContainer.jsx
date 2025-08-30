@@ -1,3 +1,4 @@
+import NoMaching from "./NoMaching";
 import Product from "./Product";
 
 function ProductsMainContainer({ setFilterMenuOpen }) {
@@ -5,7 +6,7 @@ function ProductsMainContainer({ setFilterMenuOpen }) {
   return (
     <div className="flex flex-col gap-4">
       {/* header */}
-      <div className="flex flex-col gap-1.5 justify-between items-start  bxs:items-center   bxs:flex-row">
+      <div className="flex  gap-1.5 justify-between items-center  flex-row">
         <div className="flex flex-row items-center gap-2">
           <p>Products(8)</p>
           <div
@@ -18,7 +19,7 @@ function ProductsMainContainer({ setFilterMenuOpen }) {
             <p>Filters</p>
           </div>
         </div>
-        <div className="flex flex-row items-center gap-9 border-1 border-gray-200 hover:bg-slate-200/60 rounded-md cursor-pointer pt-1 pb-1 pl-2.5 pr-2.5">
+        <div className="flex flex-row items-center gap-2 bxs:gap-9 border-1 border-gray-200 hover:bg-slate-200/60 rounded-md cursor-pointer pt-1 pb-1 pl-2.5 pr-2.5">
           <div className="flex flex-row items-center gap-1.5">
             <svg className="size-5 text-black">
               <use href="../sprite.svg#upDown_icon"></use>
@@ -37,6 +38,7 @@ function ProductsMainContainer({ setFilterMenuOpen }) {
         })}
       </div>
     </div>
+    // <NoMaching />
   );
 }
 
