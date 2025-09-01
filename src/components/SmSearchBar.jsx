@@ -6,20 +6,20 @@ function SmSearchBar({ smSearchBar, smSearchBarHandler }) {
       }`}
     >
       <div
-        className={`flex flex-row jus gap-1.5 rounded-md bg-slate-200/40  w-[80%] m-auto
+        className={`flex flex-row jus items-center gap-1.5 rounded-md bg-slate-200/40  w-[80%] m-auto mt-2 mb-1.5
    `}
       >
-        <svg className="size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+        <svg className="size-10 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
           <use href="../sprite.svg#search_icon"></use>
         </svg>
         <input
-          className="outline-0"
+          className="outline-0 text-lg "
           type="text"
           placeholder="Search products..."
         />
         <svg
           onClick={() => smSearchBarHandler()}
-          className="size-6 text-gray-400  rounded-tr-md mb-1.5 mr-3 border-1 border-slate-600 rounded-md absolute top-1 right-1 cursor-pointer"
+          className="size-8 sm:size-9 text-gray-400  rounded-tr-md mb-1.5 mr-3 border-1 border-slate-600 rounded-md absolute top-1 right-1 cursor-pointer"
         >
           <use href="../sprite.svg#close_icon"></use>
         </svg>

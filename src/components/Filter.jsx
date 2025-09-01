@@ -8,9 +8,7 @@ function Filter({ setFilterMenuOpen }) {
   const [RatingMenuOpen, setRatingMenuOpen] = useState(true);
   const [priceMenuOpen, setPriceMenuOpen] = useState(true);
   const [value, setValue] = useState([0, 1000]);
-  function onThumbDragEnd() {
-    console.log("sipan");
-  }
+
   return (
     <div className="flex flex-col p-3 rounded-md border-1 border-black h-full w-full lg:w-[280px] mb-14 bg-white overflow-auto ">
       {/* header */}
@@ -19,7 +17,7 @@ function Filter({ setFilterMenuOpen }) {
         <div className="lg:hidden flex justify-end w-full">
           <svg
             onClick={() => setFilterMenuOpen()}
-            className={`size-6 text-gray-400  border-1 border-slate-600 rounded-md   cursor-pointer`}
+            className={`size-8 text-gray-400  border-1 border-slate-600 rounded-md   cursor-pointer`}
           >
             <use href="../sprite.svg#close_icon"></use>
           </svg>

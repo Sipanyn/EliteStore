@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SmSearchBar from "./SmSearchBar";
-function Header() {
+function Header({ SetCartOpen }) {
   const [smSearchBar, setSmSearchBar] = useState(false);
   function smSearchBarHandler() {
     setSmSearchBar((pre) => !pre);
@@ -33,19 +33,22 @@ function Header() {
           {/* search bar icon */}
           <svg
             onClick={() => smSearchBarHandler()}
-            className="size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md block xs:hidden"
+            className="size-11 sm:size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md block xs:hidden"
           >
             <use href="../sprite.svg#search_icon"></use>
           </svg>
           <div className="relative">
-            <svg className="size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+            <svg
+              onClick={() => SetCartOpen((pre) => !pre)}
+              className="size-11 sm:size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md"
+            >
               <use href="../sprite.svg#cart_icon"></use>
             </svg>
             <span className="bg-red-500 rounded-md pt-0.5 pb-0.5 pl-1.5 pr-1.5 text-white text-[9px] absolute top-0  right-0">
               3
             </span>
           </div>
-          <svg className="size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
+          <svg className="size-11 sm:size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
             <use href="../sprite.svg#user_icon"></use>
           </svg>
         </div>

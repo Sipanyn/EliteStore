@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="flex flex-col border-t-1 border-gray-200 bg-zinc-100 pl-5 pr-5 sm:pl-20  sm:pr-20  md:pl-40 md:pr-40 pt-2.5 sm:pt-10 divide-y divide-gray-200 mt-4">
+    <div className="flex flex-col border-t-1 border-gray-200 bg-zinc-100 pl-5 pr-5 sm:pl-20  sm:pr-20  md:pl-40 md:pr-40 pt-2.5 sm:pt-10 divide-y divide-gray-200">
       {/* footer top */}
       <div className="flex flex-row justify-between flex-wrap gap-6 sm:gap-12 pb-5">
         {/* Elite store */}

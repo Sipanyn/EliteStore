@@ -1,7 +1,11 @@
+import { useState } from "react";
+import useProduct from "../hooks/useProduct";
 import NoMaching from "./NoMaching";
 import Product from "./Product";
 
 function ProductsMainContainer({ setFilterMenuOpen }) {
+  const [showAdd, setShowAdd] = useState(null);
+  const { data, isLoading } = useProduct();
   const myArray = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <div className="flex flex-col gap-4">
@@ -33,8 +37,15 @@ function ProductsMainContainer({ setFilterMenuOpen }) {
       </div>
       {/* products */}
       <div className="flex flex-row justify-center gap-2 flex-wrap">
-        {myArray.map((item) => {
-          return <Product key={item} />;
+        {data?.map((item) => {
+          return (
+            <Product
+              item={item}
+              key={item.id}
+              showAdd={showAdd}
+              setShowAdd={setShowAdd}
+            />
+          );
         })}
       </div>
     </div>
