@@ -7,7 +7,7 @@ async function getData() {
   const baseUrl =
     import.meta.env.MODE === "development"
       ? "/api"
-      : "https://elitestrore-api.vercel.app/products";
+      : "https://elitestrore-api.vercel.app/";
 
   const res = await fetch(`${baseUrl}/products`);
   if (!res.ok) {
