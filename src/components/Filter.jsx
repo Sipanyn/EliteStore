@@ -2,12 +2,22 @@ import { useState } from "react";
 import filterMenuHandler from "../utils/filterMenuHandler";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import useProduct from "../hooks/useProduct";
 
-function Filter({ setFilterMenuOpen }) {
+function Filter({
+  setFilterMenuOpen,
+  handleCategoryChange,
+  handleRatingChange,
+  clearFilters,
+  value,
+  setValue,
+  selectedCategories,
+  selectedRating,
+}) {
   const [CatmenuOpen, setCatMenuOpen] = useState(true);
   const [RatingMenuOpen, setRatingMenuOpen] = useState(true);
   const [priceMenuOpen, setPriceMenuOpen] = useState(true);
-  const [value, setValue] = useState([0, 1000]);
+  const { data, isLoading } = useProduct();
 
   return (
     <div className="flex flex-col p-3 rounded-md border-1 border-black h-full w-full lg:w-[280px] mb-14 bg-white overflow-auto ">
@@ -31,7 +41,9 @@ function Filter({ setFilterMenuOpen }) {
             <p>Filters</p>
           </div>
           {/* clear */}
-          <p className="cursor-pointer">Clear All</p>
+          <p onClick={clearFilters} className="cursor-pointer">
+            Clear All
+          </p>
         </div>
       </div>
       {/* categories */}
@@ -53,27 +65,65 @@ function Filter({ setFilterMenuOpen }) {
         <ul className="flex flex-col gap-2">
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
-              <input type="checkbox" name="Electronics" value="Electronics" />
+              <input
+                type="checkbox"
+                name="Electronics"
+                value="Electronics"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Electronics")}
+              />
               <span className="checkmark"></span>
               Electronics
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {
+                data?.filter((item) => {
+                  return item.category === "Electronics";
+                }).length
+              }
+            </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
-              <input type="checkbox" name="Clothing" value="Clothing" />
+              <input
+                type="checkbox"
+                name="Clothing"
+                value="Clothing"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Clothing")}
+              />
               <span className="checkmark"></span>
               Clothing
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {" "}
+              {
+                data?.filter((item) => {
+                  return item.category === "Clothing";
+                }).length
+              }
+            </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
-              <input type="checkbox" name="Books" value="Books" />
+              <input
+                type="checkbox"
+                name="Books"
+                value="Books"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Books")}
+              />
               <span className="checkmark"></span>
               Books
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {" "}
+              {
+                data?.filter((item) => {
+                  return item.category === "Books";
+                }).length
+              }
+            </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
@@ -81,27 +131,62 @@ function Filter({ setFilterMenuOpen }) {
                 type="checkbox"
                 name="Home & Garden"
                 value="Home & Garden"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Home & Garden")}
               />
               <span className="checkmark"></span>
               Home & Garden
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {" "}
+              {
+                data?.filter((item) => {
+                  return item.category === "Home & Garden";
+                }).length
+              }
+            </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
-              <input type="checkbox" name="Sports" value="Sports" />
+              <input
+                type="checkbox"
+                name="Sports"
+                value="Sports"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Sports")}
+              />
               <span className="checkmark"></span>
               Sports
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {" "}
+              {
+                data?.filter((item) => {
+                  return item.category === "Sports";
+                }).length
+              }
+            </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
-              <input type="checkbox" name="Beauty" value="Beauty" />
+              <input
+                type="checkbox"
+                name="Beauty"
+                value="Beauty"
+                onChange={handleCategoryChange}
+                checked={selectedCategories?.includes("Beauty")}
+              />
               <span className="checkmark"></span>
               Beauty
             </label>
-            <span className="text-gray-400">2</span>
+            <span className="text-gray-400">
+              {" "}
+              {
+                data?.filter((item) => {
+                  return item.category === "Beauty";
+                }).length
+              }
+            </span>
           </li>
         </ul>
       )}
@@ -124,7 +209,7 @@ function Filter({ setFilterMenuOpen }) {
         <div className="flex flex-col gap-2.5">
           <RangeSlider
             min={0}
-            max={1000}
+            max={300}
             value={value}
             step={1}
             onInput={setValue}
@@ -156,28 +241,52 @@ function Filter({ setFilterMenuOpen }) {
         <ul className="flex flex-col gap-2">
           <li>
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
-              <input type="radio" name="rating" value="4" />
+              <input
+                type="radio"
+                name="rating"
+                value="4"
+                onChange={handleRatingChange}
+                checked={selectedRating === 4}
+              />
               <span className="radio-mark"></span>
               4+ Stars
             </label>
           </li>
           <li>
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
-              <input type="radio" name="rating" value="3" />
+              <input
+                type="radio"
+                name="rating"
+                value="3"
+                onChange={handleRatingChange}
+                checked={selectedRating === 3}
+              />
               <span className="radio-mark"></span>
               3+ Stars
             </label>
           </li>
           <li>
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
-              <input type="radio" name="rating" value="2" />
+              <input
+                type="radio"
+                name="rating"
+                value="2"
+                onChange={handleRatingChange}
+                checked={selectedRating === 2}
+              />
               <span className="radio-mark"></span>
               2+ Stars
             </label>
           </li>
           <li>
             <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
-              <input type="radio" name="rating" value="1" />
+              <input
+                type="radio"
+                name="rating"
+                value="1"
+                onChange={handleRatingChange}
+                checked={selectedRating === 1}
+              />
               <span className="radio-mark"></span>
               1+ Stars
             </label>

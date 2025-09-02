@@ -9,7 +9,7 @@ function Product({ item, setShowAdd, showAdd }) {
     >
       {/* image */}
       <div
-        onClick={() => setShowAdd(item.id)}
+        onClick={() => setShowAdd(showAdd === item.id ? null : item.id)}
         className=" group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
       >
         <img
@@ -42,10 +42,16 @@ function Product({ item, setShowAdd, showAdd }) {
         <p className="font-bold pr-1.5 ">{item.title}</p>
         {/* stars */}
         <div className="flex flex-row">
-          {myArray.map((item) => {
+          {myArray.map((stars, index) => {
+            const isFilled = index < item.rate;
             return (
-              <svg key={item} className="size-4  text-amber-400">
-                <use href="../sprite.svg#star_icon"></use>
+              <svg
+                key={index}
+                className={`size-4 ${
+                  isFilled ? "text-amber-400" : "text-white"
+                }`}
+              >
+                <use href="../sprite.svg#star_icon" />
               </svg>
             );
           })}
