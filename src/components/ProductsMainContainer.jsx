@@ -3,16 +3,20 @@ import useProduct from "../hooks/useProduct";
 import NoMaching from "./NoMaching";
 import Product from "./Product";
 
-function ProductsMainContainer({ setFilterMenuOpen, filteredData }) {
+function ProductsMainContainer({
+  setFilterMenuOpen,
+  filteredData,
+  clearFilters,
+}) {
   const [showAdd, setShowAdd] = useState(null);
   const { data, isLoading } = useProduct();
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col justify-center gap-4">
       {/* header */}
       <div className="flex  gap-1.5 justify-between items-center  flex-row">
         <div className="flex flex-row items-center gap-2">
-          <p>Products(8)</p>
+          <p>Products({filteredData?.length})</p>
           <div
             onClick={() => setFilterMenuOpen((pre) => !pre)}
             className={`flex flex-row items-center gap-1 cursor-pointer pr-1.5 pl-1.5 pt-1 pb-1 hover:bg-slate-200/50 border-1 border-gray-200 rounded-md lg:opacity-0 lg:invisible`}
@@ -47,6 +51,9 @@ function ProductsMainContainer({ setFilterMenuOpen, filteredData }) {
             />
           );
         })}
+        {filteredData?.length === 0 && (
+          <NoMaching clearFilters={clearFilters} />
+        )}
       </div>
     </div>
     // <NoMaching />
