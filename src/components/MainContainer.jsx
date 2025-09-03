@@ -3,12 +3,13 @@ import Filter from "./Filter";
 import ProductsMainContainer from "./ProductsMainContainer";
 import useProduct from "../hooks/useProduct";
 
-function MainContainer() {
+function MainContainer({ searchValue, sortValue, SetSortValue }) {
   const { data, isLoading } = useProduct();
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedRating, setSelectedRating] = useState(null);
   const [value, setValue] = useState([0, 300]);
+  let sorted_filterdItems = null;
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
     setSelectedCategories((prev) =>
@@ -24,18 +25,34 @@ function MainContainer() {
       selectedCategories.includes(item.category);
 
     const inPriceRange = item.price >= value[0] && item.price <= value[1];
-
     const meetsRating = selectedRating === null || item.rate >= selectedRating;
+    const searchedValue =
+      !searchValue ||
+      item.title.toLowerCase().includes(searchValue.toLowerCase());
 
-    return inCategory & inPriceRange & meetsRating;
+    return inCategory & inPriceRange & meetsRating & searchedValue;
   });
+  if (sortValue === "Most expensive") {
+    sorted_filterdItems = filteredData?.sort((a, b) => b.price - a.price);
+  }
+  if (sortValue === "Most cheap") {
+    sorted_filterdItems = filteredData?.sort((a, b) => a.price - b.price);
+  }
+  if (sortValue === "Most popular") {
+    sorted_filterdItems = filteredData?.sort((a, b) => b.rate - a.rate);
+  }
   const clearFilters = () => {
     setSelectedCategories([]);
     setSelectedRating(null);
     setValue([0, 300]);
+    SetSortValue("Most expensive");
   };
   return (
-    <div className="flex flex-row justify-between gap-2.5 bxs:gap-1 pl-2 pr-2 sm:pl-20  sm:pr-20  md:pl-40 md:pr-40 pt-1.5 sm:pt-5 pb-4 ">
+    <div
+      className={`flex flex-row justify-between gap-2.5 bxs:gap-1 pl-2 pr-2 sm:pl-20  sm:pr-20  md:pl-40 md:pr-40 pt-1.5 sm:pt-5 pb-4 ${
+        isLoading && "min-h-dvh"
+      }`}
+    >
       {isLoading ? (
         <svg className={`size-20 m-auto`}>
           <use href="../sprite.svg#elite_icon"></use>
@@ -64,8 +81,10 @@ function MainContainer() {
           <div className="flex flex-col flex-1">
             <ProductsMainContainer
               setFilterMenuOpen={setFilterMenuOpen}
-              filteredData={filteredData}
+              sorted_filterdItems={sorted_filterdItems}
               clearFilters={clearFilters}
+              sortValue={sortValue}
+              SetSortValue={SetSortValue}
             />
           </div>
         </>

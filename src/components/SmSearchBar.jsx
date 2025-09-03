@@ -1,4 +1,4 @@
-function SmSearchBar({ smSearchBar, smSearchBarHandler }) {
+function SmSearchBar({ smSearchBar, smSearchBarHandler, setSearchValue }) {
   return (
     <div
       className={`border-1 bg-white border-gray-200/60 rounded-md mb-2 xs:hidden absolute mt-0 w-full transition-all duration-100 p-1 pt-8  ${
@@ -16,6 +16,7 @@ function SmSearchBar({ smSearchBar, smSearchBarHandler }) {
           className="outline-0 text-lg "
           type="text"
           placeholder="Search products..."
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <svg
           onClick={() => smSearchBarHandler()}

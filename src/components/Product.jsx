@@ -1,5 +1,11 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addtoCart } from "../features/productSlice";
+
 function Product({ item, setShowAdd, showAdd }) {
+  const dispatch = useDispatch();
   const myArray = [1, 2, 3, 4, 5];
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div
@@ -12,11 +18,33 @@ function Product({ item, setShowAdd, showAdd }) {
         onClick={() => setShowAdd(showAdd === item.id ? null : item.id)}
         className=" group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
       >
-        <img
-          className="object-fit rounded-tl-md rounded-tr-md"
-          src={item.src}
-          alt=""
-        />
+        <div
+          // onClick={() => setShowAdd(showAdd === item.id ? null : item.id)}
+          className="group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
+        >
+          <div className="relative w-full h-full">
+            {/* SVG Placeholder */}
+            {!loaded && (
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
+                <svg className="size-8 text-gray-400 animate-pulse">
+                  <use href="../sprite.svg#imgLoader_icon" />
+                </svg>
+              </div>
+            )}
+
+            {/* Lazy-loaded Image */}
+            <img
+              src={item.src}
+              alt=""
+              loading="lazy"
+              onLoad={() => setLoaded(true)}
+              className={`w-full h-full object-cover rounded-tl-md rounded-tr-md transition-opacity duration-500 ${
+                loaded ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </div>
+        </div>
+
         {item.discount !== 0 ? (
           <p className="text-white text-xs pt-0.5 pb-0.5 pl-1 pr-1 rounded-md absolute top-1.5 left-1 bg-red-500">
             -{item.discount}%
@@ -28,7 +56,11 @@ function Product({ item, setShowAdd, showAdd }) {
           </p>
         )}
         <div
-          className={`group-hover:-translate-y-1 group-hover:opacity-100  group-hover:visible flex items-center ${
+          onClick={() => {
+            dispatch(addtoCart(item));
+            setShowAdd(null);
+          }}
+          className={`addtoCart group-hover:-translate-y-1 group-hover:opacity-100  group-hover:visible flex items-center ${
             showAdd === item.id ? "opacity-100 visible -translate-y-1" : null
           }  flex flex-row justify-center w-[80%]  rounded-md gap-2 text-white bg-stone-900/90 absolute left-0 right-0 bottom-4 m-auto opacity-0 invisible  transition-all duration-300`}
         >

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import SmSearchBar from "./SmSearchBar";
-function Header({ SetCartOpen }) {
+import { useSelector } from "react-redux";
+function Header({ SetCartOpen, setSearchValue }) {
   const [smSearchBar, setSmSearchBar] = useState(false);
+  const cart = useSelector((state) => state.product.cart);
   function smSearchBarHandler() {
     setSmSearchBar((pre) => !pre);
   }
@@ -25,6 +27,7 @@ function Header({ SetCartOpen }) {
             className="outline-0"
             type="text"
             placeholder="Search products..."
+            onChange={(e) => setSearchValue(e.target.value)}
           />
         </div>
 
@@ -44,9 +47,11 @@ function Header({ SetCartOpen }) {
             >
               <use href="../sprite.svg#cart_icon"></use>
             </svg>
-            <span className="bg-red-500 rounded-md pt-0.5 pb-0.5 pl-1.5 pr-1.5 text-white text-[9px] absolute top-0  right-0">
-              3
-            </span>
+            {cart.length > 0 && (
+              <span className="bg-red-500 rounded-md pt-0.5 pb-0.5 pl-1.5 pr-1.5 text-white text-[9px] absolute top-0  right-0">
+                {cart.length}
+              </span>
+            )}
           </div>
           <svg className="size-11 sm:size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md">
             <use href="../sprite.svg#user_icon"></use>
@@ -57,6 +62,7 @@ function Header({ SetCartOpen }) {
       <SmSearchBar
         smSearchBar={smSearchBar}
         smSearchBarHandler={smSearchBarHandler}
+        setSearchValue={setSearchValue}
       />
     </>
   );

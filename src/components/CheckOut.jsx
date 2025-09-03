@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
 import PayMethods from "./PayMethods";
+import { useEffect } from "react";
+import { calDiscount, calTotal } from "../features/productSlice";
 
-function CheckOut() {
+function CheckOut({ total, cart, discount }) {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(calTotal());
+    dispatch(calDiscount());
+  }, [cart]);
   return (
     <div className="flex flex-col gap-5 w-full xs:w-[200px]  ">
       {/* coupon code */}
@@ -23,7 +31,7 @@ function CheckOut() {
         <div className="flex flex-col gap-2">
           <div className="flex flex-row justify-between items-center">
             <p className="text-gray-400">Discount</p>
-            <p>$00.00</p>
+            <p>${discount}</p>
           </div>
           <div className="flex flex-row justify-between items-center">
             <p className="text-gray-400">Delivery</p>
@@ -35,7 +43,7 @@ function CheckOut() {
           </div>
           <div className="flex flex-row justify-between items-center">
             <p className="text-gray-400 ">Total</p>
-            <p className="font-bold text-lg">$98.00</p>
+            <p className="font-bold text-lg">${total}</p>
           </div>
         </div>
       </div>

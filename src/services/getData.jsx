@@ -4,6 +4,8 @@
 //   return res;
 // }
 async function getData() {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+
   const baseUrl =
     import.meta.env.MODE === "development"
       ? "/api"
