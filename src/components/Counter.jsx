@@ -3,7 +3,6 @@ import { decrement, increment } from "../features/productSlice";
 import btnclick from "../utils/btnclick";
 
 function Counter({ item }) {
-  const discount = useSelector((state) => state.product.discount);
   const dispatch = useDispatch();
   return (
     <div className="flex flex-row items-center gap-4 pt-2 pb-2 pl-3 pr-3 rounded-md bg-slate-200/60">

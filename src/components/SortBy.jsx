@@ -3,7 +3,7 @@ import { useState } from "react";
 function SortBy({ sortValue, SetSortValue }) {
   const [opensort, setOpenSort] = useState(false);
   return (
-    <div className="flex flex-row items-center gap-2 bxs:gap-9 border-1 border-gray-200 hover:bg-slate-200/60 rounded-md cursor-pointer pt-1 pb-1 pl-2.5 pr-2.5 relative select-none w-fit">
+    <div className="flex flex-row items-center gap-2 bxs:gap-9 border-1 border-gray-200 hover:bg-slate-200/60 rounded-md cursor-pointer pt-1 pb-1 pl-2.5 pr-2.5 relative select-none w-fit z-5">
       <div
         onClick={() => setOpenSort((pre) => !pre)}
         className="flex flex-row items-center gap-1.5"

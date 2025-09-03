@@ -20,7 +20,7 @@ function Filter({
   const { data, isLoading } = useProduct();
 
   return (
-    <div className="flex flex-col p-3 rounded-md border-1 border-black h-full w-full lg:w-[280px] mb-14 bg-white overflow-auto ">
+    <div className="text-lg sm:text-base flex flex-col p-3 rounded-md border-1 border-black h-full w-full lg:w-[280px] mb-14 bg-white overflow-auto z-10 ">
       {/* header */}
       <div className="flex flex-col gap-1.5  items-center mb-1 lg:mb-8">
         {/* close */}
@@ -62,9 +62,9 @@ function Filter({
       </div>
       {/* categories menu */}
       {CatmenuOpen && (
-        <ul className="flex flex-col gap-2">
-          <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+        <ul className="flex flex-col gap-2 text-lg sm:text-base ">
+          <li className="flex flex-row justify-between items-center pl-1 pr-3">
+            <label className="flex flex-row items-center gap-2 cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Electronics"
@@ -84,7 +84,7 @@ function Filter({
             </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+            <label className="flex flex-row items-center gap-2 cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Clothing"
@@ -105,7 +105,7 @@ function Filter({
             </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Books"
@@ -126,7 +126,7 @@ function Filter({
             </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Home & Garden"
@@ -147,7 +147,7 @@ function Filter({
             </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Sports"
@@ -168,7 +168,7 @@ function Filter({
             </span>
           </li>
           <li className="flex flex-row justify-between pl-1 pr-3">
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-checkbox">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-checkbox">
               <input
                 type="checkbox"
                 name="Beauty"
@@ -195,7 +195,7 @@ function Filter({
         onClick={() => filterMenuHandler(setPriceMenuOpen)}
         className="flex flex-row justify-between items-center *:font-bold hover:bg-gray-200/40 p-1 rounded-md cursor-pointer mb-1.5 mt-1.5"
       >
-        <p>Price Range</p>
+        <p className="text-lg sm:text-base">Price Range</p>
         <svg
           className={`size-6 text-black transition-all duration-300 ${
             !priceMenuOpen && "rotate-180"
@@ -227,7 +227,7 @@ function Filter({
         onClick={() => filterMenuHandler(setRatingMenuOpen)}
         className="flex flex-row justify-between items-center *:font-bold hover:bg-gray-200/40 p-1 rounded-md cursor-pointer mb-1.5 mt-1.5 "
       >
-        <p>Minimum Rating</p>
+        <p className="text-lg sm:text-base">Minimum Rating</p>
         <svg
           className={`size-6 text-black  transition-all duration-300 ${
             !RatingMenuOpen && "rotate-180"
@@ -238,9 +238,9 @@ function Filter({
       </div>
       {/* minimum rating manu */}
       {RatingMenuOpen && (
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-2 text-lg sm:text-base">
           <li>
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
+            <label className="flex flex-row items-center gap-2 cursor-pointer select-none custom-radio">
               <input
                 type="radio"
                 name="rating"
@@ -253,7 +253,7 @@ function Filter({
             </label>
           </li>
           <li>
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-radio">
               <input
                 type="radio"
                 name="rating"
@@ -266,7 +266,7 @@ function Filter({
             </label>
           </li>
           <li>
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-radio">
               <input
                 type="radio"
                 name="rating"
@@ -279,7 +279,7 @@ function Filter({
             </label>
           </li>
           <li>
-            <label className="flex flex-row gap-2 cursor-pointer select-none custom-radio">
+            <label className="flex flex-row gap-2 items-center cursor-pointer select-none custom-radio">
               <input
                 type="radio"
                 name="rating"
