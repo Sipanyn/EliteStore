@@ -2,6 +2,8 @@
 ## 📖 Overview
 
 EliteStore is a responsive e-commerce application built using React, Vite, and likely other technologies for a smooth and efficient user experience.  The application is designed for users to easily browse, search, and purchase products online.  The current implementation suggests a focus on client-side rendering, leveraging Vite for fast build times and a streamlined development workflow.  Further analysis is needed to determine the full extent of features.
+Big thanks to Figma user @440267c8_a33f_4 for the amazing design work!
+
 
 ## ✨ Features
 
