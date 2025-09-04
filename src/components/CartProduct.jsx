@@ -1,9 +1,11 @@
 import { useDispatch } from "react-redux";
 import { removefromCart } from "../features/productSlice";
+
 import Counter from "./Counter";
-function CartProduct({ item }) {
+function CartProduct({ item, notify }) {
   const dispatch = useDispatch();
   const myArray = [1, 2, 3, 4, 5];
+
   return (
     <div className="flex flex-row justify-between flex-wrap lg:flex-nowrap gap-2 items-center p-2 border-1 border-gray-200 rounded-md">
       {/* product img info */}
@@ -41,7 +43,10 @@ function CartProduct({ item }) {
         </div>
         <Counter item={item} />
         <svg
-          onClick={() => dispatch(removefromCart(item))}
+          onClick={() => {
+            dispatch(removefromCart(item));
+            notify();
+          }}
           className="size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md"
         >
           <use href="../sprite.svg#delete_icon"></use>

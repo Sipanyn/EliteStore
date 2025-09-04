@@ -1,14 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import CartProduct from "./CartProduct";
 import CheckOut from "./CheckOut";
+import toast, { Toaster } from "react-hot-toast";
 function Cart({ SetCartOpen }) {
   // const myArray = [1, 2, 3, 4, 5];
   const cart = useSelector((state) => state.product.cart);
   const total = useSelector((state) => state.product.total);
   const discount = useSelector((state) => state.product.discount);
   const dispatch = useDispatch();
+  const notify = () =>
+    toast.error("Remove from Cart", { duration: 1000, removeDelay: 0 });
   return (
     <>
+      <Toaster />
       {cart.length === 0 ? (
         <div className="text-center">
           <p>Your 🛒 is empty</p>
@@ -27,7 +31,7 @@ function Cart({ SetCartOpen }) {
             {/* product */}
 
             {cart.map((item) => {
-              return <CartProduct item={item} key={item.id} />;
+              return <CartProduct item={item} key={item.id} notify={notify} />;
             })}
           </div>
 
