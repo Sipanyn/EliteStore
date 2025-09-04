@@ -15,7 +15,7 @@ function Product({ item, setShowAdd, showAdd }) {
     >
       {/* image */}
       <div
-        onClick={() => setShowAdd(showAdd === item.id ? null : item.id)}
+        onTouchStart={() => setShowAdd(showAdd === item.id ? null : item.id)}
         className=" group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
       >
         <div

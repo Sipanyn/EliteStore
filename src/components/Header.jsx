@@ -42,7 +42,7 @@ function Header({ SetCartOpen, setSearchValue }) {
           </svg>
           <div className="relative">
             <svg
-              onClick={() => SetCartOpen((pre) => !pre)}
+              onClick={() => SetCartOpen(true)}
               className="size-11 sm:size-9 text-black pl-2 pr-2 rounded-tr-md rounded-br-md cursor-pointer p-1.5 hover:bg-slate-200/60 rounded-md"
             >
               <use href="../sprite.svg#cart_icon"></use>
