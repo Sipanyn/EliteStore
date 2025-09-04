@@ -23,15 +23,12 @@ function Product({ item, setShowAdd, showAdd }) {
           showAdd === item.id ? "scale-101 shadow-md" : null
         }`}
       >
-        {/* image */}
+        {/* images */}
         <div
           onTouchStart={() => setShowAdd(showAdd === item.id ? null : item.id)}
           className=" group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
         >
-          <div
-            // onClick={() => setShowAdd(showAdd === item.id ? null : item.id)}
-            className="group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative"
-          >
+          <div className="group w-full h-[215px] sm:h-[270px] rounded-tl-md rounded-tr-md relative">
             <div className="relative w-full h-full">
               {/* SVG Placeholder */}
               {!loaded && (
