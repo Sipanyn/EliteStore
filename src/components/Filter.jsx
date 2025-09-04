@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import filterMenuHandler from "../utils/filterMenuHandler";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
